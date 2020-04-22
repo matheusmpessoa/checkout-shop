@@ -1,0 +1,28 @@
+@import 'src/assets/styles/main.scss';
+
+mat-toolbar {
+  min-height: 120px;
+  background-color: $white;
+  border-bottom: 1px solid $lightgray;
+
+  a {
+    text-decoration: none;
+
+    &hover,
+    a:active {
+      color: $lightgray;
+    }
+  }
+
+  .navigation-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media(max-width: 959px) {
+  mat-toolbar {
+    border-radius: 0px;
+  }
+}
