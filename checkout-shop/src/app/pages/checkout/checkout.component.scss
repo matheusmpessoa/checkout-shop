@@ -1,0 +1,25 @@
+@import 'src/assets/styles/main.scss';
+
+.content {
+  margin-top: 65px;
+
+  mat-card {
+    box-shadow: none;
+    border-radius: 0px;
+    min-height: 50vh;
+  }
+
+  .cardSide mat-card {
+    background-color: $pink;
+    color: $white;
+  }
+}
+
+@media only screen and (min-width: 48em) {
+  .cardSide {
+    padding-right: 0px;
+  }
+  .formSide {
+    padding-left: 0px;
+  }
+}
