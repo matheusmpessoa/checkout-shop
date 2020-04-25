@@ -13,7 +13,8 @@ interface Installments {
 })
 export class CheckoutComponent implements OnInit {
   carrinhoForm: FormGroup;
-  isLinear = true;
+  isStepperLinear = true;
+  submitted = false;
 
   numberOfInstallment: Installments[] = [
     { value: '12', viewValue: '12x R$1.000,00 sem juros' },
@@ -29,14 +30,20 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.carrinhoForm = this.fb.group({
-      cardNumber: [''],
-      fullName: [''],
-      expirationMonth: [''],
-      securityCode: ['']
+      cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(20)]],
+      fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      expirationMonth: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+      securityCode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+      numberOfInstallment: ['']
     });
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.carrinhoForm.controls; }
+
   onSubmit() {
-    console.log(this.carrinhoForm.value.username);
+    this.submitted = true;
+
+    console.log(this.carrinhoForm.value);
   }
 }
