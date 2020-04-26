@@ -2,7 +2,17 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 cardSide">
       <div class="box">
-        <mat-card>Simple card</mat-card>
+        <mat-card>
+          <div class="row hidden-xs-down">
+            <div class="col-md-12">
+              <p class="linkChangePayment">
+                <a href="/home">
+                  < Alterar forma de pagamento
+                </a>
+              </p>
+            </div>
+          </div>
+        </mat-card>
       </div>
     </div>
 
@@ -18,7 +28,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <mat-form-field>
                       <mat-label>Número do cartão</mat-label>
-                      <input matInput formControlName="cardNumber" required [ngClass]="{ 'is-invalid': submitted && f.cardNumber.errors }">
+                      <input matInput formControlName="cardNumber" required>
                     </mat-form-field>
                     <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
                       <div *ngIf="f.cardNumber.errors.required">Número do cartão é obrigatório.</div>
@@ -30,7 +40,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <mat-form-field>
                       <mat-label>Nome (igual ao cartão)</mat-label>
-                      <input matInput formControlName="fullName" required [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+                      <input matInput formControlName="fullName" required>
                     </mat-form-field>
                     <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
                       <div *ngIf="f.fullName.errors.required">Nome é obrigatório.</div>
@@ -42,7 +52,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <mat-form-field>
                       <mat-label>Validade</mat-label>
-                      <input matInput formControlName="expirationMonth" required [ngClass]="{ 'is-invalid': submitted && f.expirationMonth.errors }">
+                      <input matInput formControlName="expirationMonth" required>
                     </mat-form-field>
                     <div *ngIf="submitted && f.expirationMonth.errors" class="invalid-feedback">
                       <div *ngIf="f.expirationMonth.errors.required">Validade é obrigatório.</div>
@@ -52,7 +62,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <mat-form-field>
                       <mat-label>CVV</mat-label>
-                      <input matInput formControlName="securityCode" required [ngClass]="{ 'is-invalid': submitted && f.securityCode.errors }">
+                      <input matInput formControlName="securityCode" required>
                     </mat-form-field>
                     <div *ngIf="submitted && f.securityCode.errors" class="invalid-feedback">
                       <div *ngIf="f.securityCode.errors.required">CVV é obrigatório.</div>
@@ -62,9 +72,9 @@
 
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <mat-form-field>
+                    <mat-form-field required>
                       <mat-label>Número de parcelas</mat-label>
-                      <mat-select [ngClass]="{ 'is-invalid': submitted && f.numberOfInstallment.errors }">
+                      <mat-select>
                         <mat-option *ngFor="let numbersOfI of numberOfInstallment" [value]="numbersOfI.value">
                           {{ numbersOfI.viewValue }}
                         </mat-option>
@@ -76,8 +86,10 @@
                   </div>
                 </div>
 
-                <div class="button-row">
-                  <button mat-flat-button color="primary" matStepperNext class="btn-continue">Continuar</button>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-7 col-lg-5 col-lg-offset-7">
+                    <button mat-flat-button color="primary" matStepperNext class="btn-continue">Continuar</button>
+                  </div>
                 </div>
               </form>
             </mat-step>

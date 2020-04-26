@@ -34,11 +34,10 @@ export class CheckoutComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       expirationMonth: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
       securityCode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      numberOfInstallment: ['']
+      numberOfInstallment: ['', Validators.required]
     });
   }
 
-  // convenience getter for easy access to form fields
   get f() { return this.carrinhoForm.controls; }
 
   onSubmit() {
