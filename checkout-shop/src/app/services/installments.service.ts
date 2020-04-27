@@ -5,13 +5,13 @@ import { ENDPOINTS } from 'src/environments/endpoints';
 @Injectable({
   providedIn: 'root'
 })
-export class CheckoutService {
+export class InstallmentsService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  sendCheckoutCarrinho(body: object) {
-    return this.http.post<any>(ENDPOINTS.postURLcheckout, body);
+  getInstallments() {
+    return this.http.get<any>(ENDPOINTS.getURLinstallments);
   }
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="carrinhoForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmitForm()">
   <div class="content">
     <div class="row">
 
@@ -37,15 +37,15 @@
                     </div>
                     <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <p class="cardNumber">{{ carrinhoForm.value.cardNumber }}</p>
+                        <p class="cardNumber">{{ checkoutForm.value.cardNumber }}</p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                        <p class="fullName">{{ carrinhoForm.value.fullName }}</p>
+                        <p class="fullName">{{ checkoutForm.value.fullName }}</p>
                       </div>
                       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <p class="date">{{ carrinhoForm.value.expirationCard }}</p>
+                        <p class="date">{{ checkoutForm.value.expirationCard }}</p>
                       </div>
                     </div>
                   </div>
@@ -72,14 +72,19 @@
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2">
                 <mat-horizontal-stepper [linear]="isStepperLinear" #stepper>
-                  <mat-step [stepControl]="carrinhoForm">
-                      <ng-template matStepperIcon="done" matStepLabel>Carrinho</ng-template>
+                  <mat-step [stepControl]="carrinho">
+                    <ng-template matStepperIcon="done" matStepLabel>Carrinho</ng-template>
+                    <h2>Carrinho</h2>
+                  </mat-step>
+
+                  <mat-step [stepControl]="checkoutForm">
+                      <ng-template matStepperIcon="done" matStepLabel>Pagamento</ng-template>
 
                       <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
                           <mat-form-field>
                             <mat-label>Número do cartão</mat-label>
-                            <input matInput formControlName="cardNumber" maxlength="20" required>
+                            <input matInput formControlName="cardNumber" maxlength="16" required>
                           </mat-form-field>
                           <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
                             <div *ngIf="f.cardNumber.errors.required">Número do cartão inválido.</div>
@@ -119,7 +124,7 @@
                           </mat-form-field>
                           <div *ngIf="submitted && f.securityCode.errors" class="invalid-feedback">
                             <div *ngIf="f.securityCode.errors.required">Código inválido.</div>
-                            <div *ngIf="f.fullName.errors.minlength">CVV deve possuir 3 números.</div>
+                            <div *ngIf="f.securityCode.errors.minlength">CVV deve possuir 3 números.</div>
                           </div>
                         </div>
                       </div>
@@ -145,11 +150,6 @@
                           <button mat-flat-button color="primary" matStepperNext class="btn-continue">Continuar</button>
                         </div>
                       </div>
-                  </mat-step>
-
-                  <mat-step [stepControl]="secondFormGroup">
-                    <ng-template matStepperIcon="done" matStepLabel>Pagamento</ng-template>
-                    <h1>hi</h1>
                   </mat-step>
 
                   <mat-step>

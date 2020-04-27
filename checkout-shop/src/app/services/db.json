@@ -1,0 +1,55 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "client": {
+        "fullName": "Kurt cobain",
+        "firstName": "Kurt",
+        "lastName": "cobain",
+        "cpf": "349.857.826-11",
+        "gender": "Male",
+        "dateOfBirth": "2/12/1997",
+        "email": "kcobain0@fakemail.com",
+        "phone": "+86 (817) 545-0780",
+        "address": "4920 Quincy Circle"
+      },
+      "creditCard": {
+        "cardNumber": "3652507591987880",
+        "expirationMonth": "02",
+        "expirationYear": "22",
+        "securityCode": "849",
+        "brand": "visa"
+      }
+    },
+    {
+      "cardNumber": "44444444444444222",
+      "fullName": "Matheus Pessoa",
+      "expirationCard": "1222",
+      "securityCode": "222",
+      "numberOfInstallment": "10",
+      "id": 2
+    }
+  ],
+  "installments": [
+    {
+      "value": "12",
+      "viewValue": "12x R$1.000,00 sem juros"
+    },
+    {
+      "value": "10",
+      "viewValue": "12x R$1.000,00 sem juros"
+    },
+    {
+      "value": "6",
+      "viewValue": "6x R$2.000,00 sem juros"
+    },
+    {
+      "value": "2",
+      "viewValue": "2x R$6.000,00 sem juros"
+    },
+    {
+      "value": "1",
+      "viewValue": "A vista"
+    }
+  ]
+}
