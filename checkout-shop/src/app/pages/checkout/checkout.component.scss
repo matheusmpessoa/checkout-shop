@@ -40,8 +40,6 @@
     }
 
     .titleNewCard {
-      margin: 10px 0px;
-
       img {
         margin-top: 18px;
         float: right;
@@ -56,8 +54,64 @@
     }
 
     .card {
+      margin-top: 20px;
       position: fixed;
       z-index: 100;
+      color: $white;
+
+      .wrapper {
+        display: grid;
+      }
+
+      .imgEmptyCard {
+        content: url("./../../../assets/images/empty-card-front.svg");
+      }
+
+      .imgCardInfo {
+        min-height: 223px;
+        min-width: 364px;
+        background: no-repeat url("./../../../assets/images/fill-card-info.svg");
+
+        .logoVisa {
+          margin-top: 35px;
+          margin-left: 25px;
+        }
+
+        .cardNumber {
+          margin-top: 48px;
+          margin-left: 25px;
+          text-transform: uppercase;
+          letter-spacing: 2.31px;
+          text-shadow: 0px 1px 2px $black;
+        }
+
+        .fullName {
+          margin-top: 35px;
+          margin-left: 25px;
+          text-align: left;
+          text-transform: uppercase;
+          letter-spacing: 0px;
+          text-shadow: 0px 1px 2px $black;
+        }
+
+        .date {
+          margin-top: 35px;
+          margin-right: 33px;
+          text-align: right;
+        }
+      }
+
+      .imgFillCardCVV {
+        min-height: 223px;
+        min-width: 364px;
+        background: no-repeat url("./../../../assets/images/fill-card-cvv.svg");
+
+        .symbolCode {
+          margin-top: 110px;
+          margin-left: 183px;
+          color: $black;
+        }
+      }
     }
 
     // @media (min-width: 576px) {
@@ -75,10 +129,6 @@
     @media (max-width: 992px) {
       .card {
         position: relative;
-
-        img {
-          width: 100%;
-        }
       }
     }
 

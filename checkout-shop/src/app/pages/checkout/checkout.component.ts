@@ -31,14 +31,14 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.createCarrinhoForm();
-    this.onChanges();
+    this.onChangesForm();
   }
 
   createCarrinhoForm() {
     this.carrinhoForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(20)]],
-      fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      expirationMonth: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+      fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      expirationCard: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
       securityCode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
       numberOfInstallment: ['', [Validators.required]]
     });
@@ -49,27 +49,23 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.carrinhoForm);
-    console.log(this.carrinhoForm.controls);
-    console.log(this.carrinhoForm.value);
 
     if (this.carrinhoForm.invalid) {
       return;
     }
   }
 
-  somethingChanged() {
-    this.changeSecurityCode = true;
-    console.log('mudou');
-  }
-
-  onChanges(): void {
-    this.carrinhoForm.get('securityCode').valueChanges.subscribe(val => {
-      this.changeSecurityCode = true;
+  onChangesForm(): void {
+    this.carrinhoForm.get('expirationCard').valueChanges.subscribe(val => {
+      this.changeSecurityCode = false;
     });
-
     this.carrinhoForm.get('numberOfInstallment').valueChanges.subscribe(val => {
       this.changeSecurityCode = false;
+    });
+
+    // CVV
+    this.carrinhoForm.get('securityCode').valueChanges.subscribe(val => {
+      this.changeSecurityCode = true;
     });
   }
 }
