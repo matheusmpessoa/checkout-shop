@@ -24,7 +24,11 @@
 
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 card">
-              <img src="../../../assets/images/empty-card-front.svg" alt="Cartão">
+              <img src="../../../assets/images/empty-card-front.svg" alt="Cartão empty" *ngIf="!ft.touched">
+
+              <img src="../../../assets/images/fill-card-info.svg" alt="Cartão info" *ngIf="ft.touched && !changeSecurityCode">
+            
+              <img src="../../../assets/images/fill-card-cvv.svg" alt="Cartão CVV" *ngIf="changeSecurityCode">
             </div>
           </div>
         </mat-card>
@@ -42,7 +46,7 @@
                     <ng-template matStepperIcon="done" matStepLabel>Carrinho</ng-template>
 
                     <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
                         <mat-form-field>
                           <mat-label>Número do cartão</mat-label>
                           <input matInput formControlName="cardNumber" required>
@@ -54,7 +58,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
                         <mat-form-field>
                           <mat-label>Nome (igual ao cartão)</mat-label>
                           <input matInput formControlName="fullName" required>
@@ -66,7 +70,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
                         <mat-form-field>
                           <mat-label>Validade</mat-label>
                           <input matInput formControlName="expirationMonth" required>
@@ -76,7 +80,8 @@
                         </div>
                       </div>
 
-                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
+                        {{ changeSecurityCode | json }}
                         <mat-form-field>
                           <mat-label>CVV</mat-label>
                           <input matInput formControlName="securityCode" required>
@@ -88,10 +93,10 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <mat-form-field required>
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
+                        <mat-form-field>
                           <mat-label>Número de parcelas</mat-label>
-                          <mat-select>
+                          <mat-select formControlName="numberOfInstallment">
                             <mat-option *ngFor="let numbersOfI of numberOfInstallment" [value]="numbersOfI.value">
                               {{ numbersOfI.viewValue }}
                             </mat-option>

@@ -13,8 +13,9 @@ interface Installments {
 })
 export class CheckoutComponent implements OnInit {
   carrinhoForm: FormGroup;
-  isStepperLinear = true;
-  submitted = false;
+  isStepperLinear: boolean = true;
+  submitted: boolean = false;
+  changeSecurityCode: boolean = false;
 
   numberOfInstallment: Installments[] = [
     { value: '12', viewValue: '12x R$1.000,00 sem juros' },
@@ -29,20 +30,46 @@ export class CheckoutComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.createCarrinhoForm();
+    this.onChanges();
+  }
+
+  createCarrinhoForm() {
     this.carrinhoForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(20)]],
       fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       expirationMonth: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
       securityCode: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      numberOfInstallment: ['', Validators.required]
+      numberOfInstallment: ['', [Validators.required]]
     });
   }
 
   get f() { return this.carrinhoForm.controls; }
+  get ft() { return this.carrinhoForm; }
 
   onSubmit() {
     this.submitted = true;
-
+    console.log(this.carrinhoForm);
+    console.log(this.carrinhoForm.controls);
     console.log(this.carrinhoForm.value);
+
+    if (this.carrinhoForm.invalid) {
+      return;
+    }
+  }
+
+  somethingChanged() {
+    this.changeSecurityCode = true;
+    console.log('mudou');
+  }
+
+  onChanges(): void {
+    this.carrinhoForm.get('securityCode').valueChanges.subscribe(val => {
+      this.changeSecurityCode = true;
+    });
+
+    this.carrinhoForm.get('numberOfInstallment').valueChanges.subscribe(val => {
+      this.changeSecurityCode = false;
+    });
   }
 }
