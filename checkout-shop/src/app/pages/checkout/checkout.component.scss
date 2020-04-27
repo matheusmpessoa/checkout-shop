@@ -10,10 +10,15 @@
   mat-card {
     box-shadow: none;
     border-radius: 0px;
-    min-height: 55vh;
+    min-height: 59.5vh;
 
     .mat-form-field {
       display: inherit;
+    }
+
+    .mat-form-field-invalid .mat-input-element {
+      caret-color: $gray;
+      color: $gray;
     }
   }
 
@@ -141,6 +146,10 @@
 
   .formSide {
     .mat-horizontal-stepper-header-container {
+      margin-top: 50px;
+    }
+
+    .mat-stepper-horizontal {
       margin-top: 50px;
     }
 
