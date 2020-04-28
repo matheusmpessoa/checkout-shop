@@ -84,7 +84,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
                           <mat-form-field>
                             <mat-label>Número do cartão</mat-label>
-                            <input matInput formControlName="cardNumber" maxlength="16" required>
+                            <input matInput formControlName="cardNumber" maxlength="16" onlyNumbers required>
                           </mat-form-field>
                           <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
                             <div *ngIf="f.cardNumber.errors.required">Número do cartão inválido.</div>
@@ -110,7 +110,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
                           <mat-form-field>
                             <mat-label>Validade</mat-label>
-                            <input matInput formControlName="expirationCard" maxlength="4" required>
+                            <input matInput formControlName="expirationCard" maxlength="4" onlyNumbers required>
                           </mat-form-field>
                           <div *ngIf="submitted && f.expirationCard.errors" class="invalid-feedback">
                             <div *ngIf="f.expirationCard.errors.required">Data inválida.</div>
@@ -120,7 +120,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
                           <mat-form-field>
                             <mat-label>CVV</mat-label>
-                            <input matInput formControlName="securityCode" maxlength="3" required>
+                            <input matInput formControlName="securityCode" maxlength="3" onlyNumbers required>
                           </mat-form-field>
                           <div *ngIf="submitted && f.securityCode.errors" class="invalid-feedback">
                             <div *ngIf="f.securityCode.errors.required">Código inválido.</div>

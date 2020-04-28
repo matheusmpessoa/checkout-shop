@@ -1,26 +1,5 @@
 {
-  "clients": [
-    {
-      "id": 1,
-      "client": {
-        "fullName": "Kurt cobain",
-        "firstName": "Kurt",
-        "lastName": "cobain",
-        "cpf": "349.857.826-11",
-        "gender": "Male",
-        "dateOfBirth": "2/12/1997",
-        "email": "kcobain0@fakemail.com",
-        "phone": "+86 (817) 545-0780",
-        "address": "4920 Quincy Circle"
-      },
-      "creditCard": {
-        "cardNumber": "3652507591987880",
-        "expirationMonth": "02",
-        "expirationYear": "22",
-        "securityCode": "849",
-        "brand": "visa"
-      }
-    },
+  "checkout": [
     {
       "cardNumber": "44444444444444222",
       "fullName": "Matheus Pessoa",

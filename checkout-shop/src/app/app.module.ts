@@ -13,12 +13,16 @@ import { HeaderComponent } from './layout/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 
+import { OnlyNumbersDirective } from './directives/numeric.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    CheckoutComponent
+    CheckoutComponent,
+
+    OnlyNumbersDirective
   ],
   imports: [
     BrowserModule,
