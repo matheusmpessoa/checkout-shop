@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckoutService } from 'src/app/services/checkout.service';
+
+export interface CheckoutElements {
+  id: number;
+  cardNumber: string;
+  fullName: string;
+  expirationCard: string;
+  securityCode: string;
+  numberOfInstallment: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -6,10 +16,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'fullName', 'cardNumber', 'securityCode', 'numberOfInstallment'];
+  dataSource: CheckoutElements[];
 
-  constructor() { }
+  constructor(
+    public checkoutService: CheckoutService
+  ) { }
 
   ngOnInit() {
+    this.getCheckouts();
+  }
+
+  getCheckouts() {
+    this.checkoutService.getCheckouts()
+      .subscribe(res => {
+          this.dataSource = res;
+          console.log(this.dataSource);
+        }, error => {
+          return;
+        }
+      );
   }
 
 }

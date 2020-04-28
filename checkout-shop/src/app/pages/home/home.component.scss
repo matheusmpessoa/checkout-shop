@@ -1,5 +1,15 @@
 @import 'src/assets/styles/main.scss';
 
-mat-card {
+.content {
+  margin-top: 65px;
 
+  mat-toolbar a {
+    color: $pink;
+  }
+
+  mat-card {
+    table {
+      width: 100%;
+    }
+  }
 }

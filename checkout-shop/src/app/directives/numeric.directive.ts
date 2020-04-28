@@ -9,7 +9,7 @@ import {
   selector: "[onlyNumbers]"
 })
 export class OnlyNumbersDirective {
-  @Input("decimals") decimals: int = 0;
+  @Input("decimals") decimals = 0;
 
   private check(value: string) {
     if (this.decimals <= 0) {

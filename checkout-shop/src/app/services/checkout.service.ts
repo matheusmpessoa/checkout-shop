@@ -12,6 +12,10 @@ export class CheckoutService {
   ) { }
 
   sendCheckoutCarrinho(body: object) {
-    return this.http.post<any>(ENDPOINTS.postURLcheckout, body);
+    return this.http.post<any>(ENDPOINTS.urlCheckout, body);
+  }
+
+  getCheckouts() {
+    return this.http.get<any>(ENDPOINTS.urlCheckout);
   }
 }
