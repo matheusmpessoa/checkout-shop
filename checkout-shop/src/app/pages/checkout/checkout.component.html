@@ -86,86 +86,100 @@
                   </mat-step>
 
                   <mat-step [stepControl]="checkoutForm">
-                      <ng-template matStepLabel>Pagamento</ng-template>
+                    <ng-template matStepLabel>Pagamento</ng-template>
 
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
-                          <mat-form-field>
-                            <mat-label>Número do cartão</mat-label>
-                            <input matInput formControlName="cardNumber" maxlength="16" onlyNumbers required>
-                          </mat-form-field>
-                          <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
-                            <div *ngIf="f.cardNumber.errors.required">Número do cartão inválido.</div>
-                            <div *ngIf="f.cardNumber.errors.minlength">Número do cartão deve conter 16 números.</div>
-                          </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
+                        <mat-form-field>
+                          <mat-label>Número do cartão</mat-label>
+                          <input matInput formControlName="cardNumber" maxlength="16" onlyNumbers required>
+                        </mat-form-field>
+                        <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
+                          <div *ngIf="f.cardNumber.errors.required">Número do cartão inválido.</div>
+                          <div *ngIf="f.cardNumber.errors.minlength">Número do cartão deve conter 16 números.</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
+                        <mat-form-field>
+                          <mat-label>Nome (igual ao cartão)</mat-label>
+                          <input matInput formControlName="fullName" maxlength="60" required>
+                        </mat-form-field>
+                        <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                          <div *ngIf="f.fullName.errors.required">Insira seu nome completo.</div>
+                          <div *ngIf="f.fullName.errors.minlength">Número do cartão deve conter 16 números.</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
+                        <mat-form-field>
+                          <mat-label>Validade</mat-label>
+                          <input matInput formControlName="expirationCard" maxlength="4" onlyNumbers required>
+                        </mat-form-field>
+                        <div *ngIf="submitted && f.expirationCard.errors" class="invalid-feedback">
+                          <div *ngIf="f.expirationCard.errors.required">Data inválida.</div>
                         </div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
-                          <mat-form-field>
-                            <mat-label>Nome (igual ao cartão)</mat-label>
-                            <input matInput formControlName="fullName" maxlength="60" required>
-                          </mat-form-field>
-                          <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
-                            <div *ngIf="f.fullName.errors.required">Insira seu nome completo.</div>
-                            <div *ngIf="f.fullName.errors.minlength">Número do cartão deve conter 16 números.</div>
-                          </div>
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
+                        <mat-form-field>
+                          <mat-label>CVV</mat-label>
+                          <input matInput formControlName="securityCode" maxlength="3" onlyNumbers required>
+                        </mat-form-field>
+                        <div *ngIf="submitted && f.securityCode.errors" class="invalid-feedback">
+                          <div *ngIf="f.securityCode.errors.required">Código inválido.</div>
+                          <div *ngIf="f.securityCode.errors.minlength">CVV deve possuir 3 números.</div>
                         </div>
                       </div>
+                    </div>
 
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
-                          <mat-form-field>
-                            <mat-label>Validade</mat-label>
-                            <input matInput formControlName="expirationCard" maxlength="4" onlyNumbers required>
-                          </mat-form-field>
-                          <div *ngIf="submitted && f.expirationCard.errors" class="invalid-feedback">
-                            <div *ngIf="f.expirationCard.errors.required">Data inválida.</div>
-                          </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 inputCarrinho">
-                          <mat-form-field>
-                            <mat-label>CVV</mat-label>
-                            <input matInput formControlName="securityCode" maxlength="3" onlyNumbers required>
-                          </mat-form-field>
-                          <div *ngIf="submitted && f.securityCode.errors" class="invalid-feedback">
-                            <div *ngIf="f.securityCode.errors.required">Código inválido.</div>
-                            <div *ngIf="f.securityCode.errors.minlength">CVV deve possuir 3 números.</div>
-                          </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
+                        <mat-form-field>
+                          <mat-label>Número de parcelas</mat-label>
+                          <mat-select formControlName="numberOfInstallment">
+                            <mat-option *ngFor="let numbersOfI of numberOfInstallment" [value]="numbersOfI.value">
+                              {{ numbersOfI.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="submitted && f.numberOfInstallment.errors" class="invalid-feedback">
+                          <div *ngIf="f.numberOfInstallment.errors.required">Insira o número de parcelas.</div>
                         </div>
                       </div>
+                    </div>
 
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 inputCarrinho">
-                          <mat-form-field>
-                            <mat-label>Número de parcelas</mat-label>
-                            <mat-select formControlName="numberOfInstallment">
-                              <mat-option *ngFor="let numbersOfI of numberOfInstallment" [value]="numbersOfI.value">
-                                {{ numbersOfI.viewValue }}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                          <div *ngIf="submitted && f.numberOfInstallment.errors" class="invalid-feedback">
-                            <div *ngIf="f.numberOfInstallment.errors.required">Insira o número de parcelas.</div>
-                          </div>
-                        </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-7 col-lg-5 col-lg-offset-7">
+                        <button mat-flat-button color="primary" matStepperNext class="btn-continue">Continuar</button>
                       </div>
-
-                      <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-7 col-lg-5 col-lg-offset-7">
-                          <button mat-flat-button color="primary" matStepperNext class="btn-continue">Continuar</button>
-                        </div>
-                      </div>
+                    </div>
                   </mat-step>
 
                   <mat-step>
                     <ng-template matStepLabel>Confirmação</ng-template>
 
                     <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p>Resumo:</p>
+
+                        <mat-list>
+                          <mat-list-item>{{ checkoutForm.value.fullName }}</mat-list-item>
+                          <mat-list-item>{{ checkoutForm.value.cardNumber }}</mat-list-item>
+                          <mat-list-item>{{ checkoutForm.value.expirationCard }}</mat-list-item>
+                          <mat-list-item>{{ checkoutForm.value.securityCode }}</mat-list-item>
+                          <mat-list-item>{{ checkoutForm.value.numberOfInstallment }}</mat-list-item>
+                         </mat-list>
+                      </div>
+                    </div>
+
+                    <div class="row">
                       <div class="col-xs-12 col-sm-offset-8 col-sm-4 col-md-4 col-md-offset-8 col-lg-4 col-lg-offset-8">
-                        <button mat-flat-button color="primary" matStepperPrevious class="btn-continue">Confirmar compra</button>
+                        <button mat-flat-button color="primary" matStepperPrevious class="btn-continue" >Confirmar compra</button>
                       </div>
                     </div>
                   </mat-step>

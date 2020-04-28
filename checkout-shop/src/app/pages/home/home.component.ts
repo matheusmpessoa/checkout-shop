@@ -16,7 +16,7 @@ export interface CheckoutElements {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'fullName', 'cardNumber', 'securityCode', 'numberOfInstallment'];
+  displayedColumns: string[] = ['id', 'fullName', 'cardNumber', 'expirationCard', 'securityCode', 'numberOfInstallment'];
   dataSource: CheckoutElements[];
 
   constructor(
