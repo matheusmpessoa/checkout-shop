@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { InstallmentsService } from 'src/app/services/installments.service';
 
+export interface InstallmentElements {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -10,7 +15,7 @@ import { InstallmentsService } from 'src/app/services/installments.service';
 })
 export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
-  numberOfInstallment: Array<object>;
+  numberOfInstallment: InstallmentElements[];
   isStepperLinear: boolean = true;
   submitted: boolean = false;
   changeSecurityCode: boolean = false;
